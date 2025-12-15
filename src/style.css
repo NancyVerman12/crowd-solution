@@ -1,0 +1,208 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Desktop - Default (Figma specs) */
+.login-container {
+  width: 1110px;
+  height: 326px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.hero-text {
+  width: 428px;
+  height: 80px;
+}
+
+.login-card {
+  width: 360px;
+  height: 326px;
+}
+
+/* Tablet */
+@media (max-width: 1200px) {
+  .login-container {
+    width: 90%;
+    max-width: 1110px;
+    flex-direction: column;
+    height: auto;
+    gap: 40px;
+  }
+
+  .hero-text {
+    width: 100%;
+    max-width: 428px;
+  }
+
+  .login-card {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .login-container {
+    width: 95%;
+    padding: 20px 0;
+    gap: 30px;
+  }
+
+  .hero-text {
+    width: 100%;
+    max-width: 350px;
+    height: 70px;
+  }
+
+  .login-card {
+    width: 100%;
+    max-width: 340px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .hero-text {
+    max-width: 300px;
+    height: 60px;
+  }
+
+  .login-card {
+    max-width: 300px;
+  }
+}
+
+/* --- Dashboard Responsiveness --- */
+
+/* Mobile Sidebar Transition */
+.dashboard-sidebar {
+  transition: transform 0.3s ease-in-out;
+  z-index: 50;
+}
+
+.dashboard-sidebar.open {
+  transform: translateX(0) !important;
+}
+
+/* Mobile Overlay for Sidebar */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 40;
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+/* Tablet & Mobile Styles */
+@media (max-width: 1024px) {
+  .dashboard-sidebar {
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    transform: translateX(-100%);
+    /* Hide by default */
+  }
+
+  .demographics-row {
+    flex-direction: column;
+    height: auto !important;
+  }
+
+  .demographics-card-left,
+  .demographics-card-right {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 400px !important;
+    /* Ensure enough height for charts */
+    margin-bottom: 24px;
+    flex: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Layout */
+  .dashboard-main {
+    width: 100%;
+  }
+
+  /* Stats Section */
+  .stats-cards-container {
+    flex-direction: column;
+  }
+
+  .stat-card-group,
+  .stat-card-single {
+    width: 100% !important;
+    flex: none !important;
+    min-width: 0 !important;
+    height: auto !important;
+    padding: 16px !important;
+    gap: 16px !important;
+  }
+
+  .stat-card-group {
+    flex-direction: column;
+  }
+
+  .stat-card-group>div {
+    width: 100%;
+    height: auto !important;
+  }
+
+  /* Remove the vertical divider in mobile */
+  .stat-card-group>div:nth-child(2) {
+    display: none;
+  }
+
+  /* Charts */
+  .chart-container {
+    height: 250px !important;
+  }
+
+  /* Header */
+  .top-bar {
+    padding: 0 16px !important;
+  }
+
+  .top-bar>div:first-child {
+    /* Crowd Solutions + Divider + Site Selector */
+    width: auto !important;
+    gap: 12px !important;
+  }
+
+  #site-selector {
+    width: 140px !important;
+  }
+
+  /* Hide strict pixel width elements */
+  .dashboard-layout {
+    width: 100% !important;
+  }
+}
